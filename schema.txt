@@ -1,0 +1,6 @@
+analysis
+['bars_confidence', 'bars_start', 'beats_confidence', 'beats_start', 'sections_confidence', 'sections_start', 'segments_confidence', 'segments_loudness_max', 'segments_loudness_max_time', 'segments_loudness_start', 'segments_pitches', 'segments_start', 'segments_timbre', 'songs', 'tatums_confidence', 'tatums_start']
+metadata
+['artist_terms', 'artist_terms_freq', 'artist_terms_weight', 'similar_artists', 'songs']
+musicbrainz
+['artist_mbtags', 'artist_mbtags_count', 'songs']

@@ -1,0 +1,8 @@
+MillionSongSubset
+__pycache__/
+.ipynb_checkpoints/
+milsongs.rar
+/millionsongsubset/
+*.h5
+msd_summary_file.h5
+.h5
