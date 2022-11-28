@@ -1,0 +1,54 @@
+analysis sample rate,float
+artist 7digitalid,int
+artist familiarity,float
+artist hotttnesss,float
+artist id,string
+artist latitude,float
+artist location,string
+artist longitude,float
+artist mbid,string
+artist mbtags,array string
+artist mbtags count,array int
+artist name,string
+artist playmeid,int
+artist terms,array string
+artist terms freq,array float
+artist terms weight,array float
+audio md5,string
+bars confidence,array float
+bars start,array float
+beats confidence,array float
+beats start,array float
+danceability,float
+duration,float
+end of fade in,float
+energy,float
+key,int
+key confidence,float
+loudness,float
+mode,int
+mode confidence,float
+release,string
+release 7digitalid,int
+sections confidence,array float
+sections start,array float
+segments confidence,array float
+segments loudness max,array float
+segments loudness max time,array float
+segments loudness max start,array float
+segments pitches,2D array float
+segments start,array float
+segments timbre,2D array float
+similar artists,array string
+song hotttnesss,float
+song id,string
+start of fade out,float
+tatums confidence,array float
+tatums start,array float
+tempo,float
+time signature,int
+time signature confidence,float
+title,string
+track id,string
+track 7digitalid,int
+year,int
