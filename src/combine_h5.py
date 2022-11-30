@@ -135,7 +135,7 @@ def get_data(data, path):
         data['year'].append(h5py_getter.get_year(f))
     return data
 
-# Loop through every directory to get .h5 file
+## Loop through every directory to get .h5 file
 # for directories in os.listdir(path): 
 #     for middle_dir in os.listdir(os.path.join(path, directories)):
 #         data = data_dict
