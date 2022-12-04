@@ -55,10 +55,11 @@ fact_song = fact_song.join(dim_album, 'release').drop('release')
 fact_song.na.fill(value=0)
 # fact_song.write.parquet("s3://1msongdata/clean_test/fact_song",mode="overwrite")
 # fact_song.show(10)
-
-fact_song1 =fact_song.select(1)
-# fact_song.show(5)
-fact_song1.show()
+# fact_song.write.csv('/home/tkien/project/1msong/data/fact_song.csv', header=True, mode='overwrite')
+fact_song.write.csv('/home/tkien/project/1msong/data/fact_song.csv', header=False, mode='overwrite')
+# fact_song1 =fact_song.select(1)
+fact_song.show(5)
+# fact_song1.show()
 # fact_song.write.format('jdbc').options(
 #     url='jdbc:mysql://localhost/database_name',
 #     driver='com.mysql.jdbc.Driver',
