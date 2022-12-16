@@ -42,11 +42,13 @@ dim_artist_term = dim_artist_term.join(dim_term, 'terms').select('artist_id', 't
 dim_artist_term.write.parquet("s3://1msongdata/clean_test/dim_artist_term",mode="overwrite")
 
 
-# Create dim_artist_term
+# Create dim_artist
 dim_artist = df.select('artist_id', 'artist_name', 'artist_location', 'artist_familiarity', 'artist_hotttnesss', \
                         'artist_latitude', 'artist_longitude')
 dim_artist = dim_artist.withColumn('artist_location', func.when((func.col('artist_location') == '') | (func.col('artist_location').isNull()),\
     'unknown').otherwise(func.col('artist_location')))
+# delete rows duplicated by artist_id
+# ..... to be continued
 dim_artist = dim_artist.join(dim_city, 'artist_location').drop('artist_location')
 dim_artist.write.parquet("s3://1msongdata/clean_test/dim_artist",mode="overwrite")
 

@@ -5,3 +5,6 @@ milsongs.rar
 src/test.py
 data/
 emr/
+airflow/logs/
+airflow/plugins/
+rar/
