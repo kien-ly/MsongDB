@@ -1,2 +1,11 @@
 ## Data pipeline
-![Alt text](MsongDB/img/a2.png "a title")
+
+
+![](https://github.com/neikyllykien/MsongDB/blob/main/img/a2.png)
+*pipeline*
+
+
+<p>
+    <img src="https://github.com/neikyllykien/MsongDB/blob/main/img/a2.png" alt>
+    <em>pipeline</em>
+</p>
