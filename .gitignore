@@ -8,3 +8,4 @@ emr/
 airflow/logs/
 airflow/plugins/
 rar/
+airflow/dags/x.txt
