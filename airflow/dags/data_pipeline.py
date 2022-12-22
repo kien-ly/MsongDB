@@ -1,6 +1,5 @@
 from airflow import DAG
 from datetime import datetime
-
 from airflow.providers.amazon.aws.operators.glue import GlueJobOperator
 from airflow.providers.amazon.aws.operators.glue_crawler import GlueCrawlerOperator
 from airflow.providers.amazon.aws.operators.redshift_data import RedshiftDataOperator
@@ -10,10 +9,11 @@ from create_table.create_table import CREATE_TABLE
 from groups.group_upload_s3 import upload_s3_tasks
 from groups.group_check_code import check_code_s3_tasks
 
+
+
 BUCKET_NAME = '1msongdata'
 CODE_ETL_PATH_S3 = 'etl_code/elt_pyspark.py'
 CODE_S3_REDSHIFT_PATH_S3 = 'etl_code/upload_to_redshift.py'
-
 REDSHIFT_CLUSTER = Variable.get("REDSHIFT_CLUSTER")
 CONN_ID = Variable.get("CONN_ID")
 REDSHIFT_CONN_ID = Variable.get("REDSHIFT_CONN_ID")
@@ -25,7 +25,7 @@ glue_crawler_config = {
         "Name": 'quangndd2-redshift-milsong-airflow',
         "Role": 'arn:aws:iam::666243375423:role/DataCamp_GlueService_Role',
         "DatabaseName": 'quangndd2-milsong-redshift',
-        "Targets": {"JdbcTargets": [{"ConnectionName" : "quangndd-connector-redshift", "Path": "dev/airflow/%"}]},
+        "Targets": {"JdbcTargets": [{"ConnectionName" : "quangndd-connector-redshift", "Path": "dev/airflow1/%"}]},
     }
 
 
@@ -74,7 +74,7 @@ with DAG(
 
         create_job_kwargs={"GlueVersion": "4.0", "NumberOfWorkers": 10, "WorkerType": "G.1X",
                             "DefaultArguments": {'--job-bookmark-option': 'job-bookmark-enable',
-                            '--TempDir': 's3://1msongdata/temp_stage'}},
+                            '--TempDir': 's3://1msongdata/temp_stage2'}},
     )
 
     [upload, create_table_redshift_data] >> check_code >> [crawl_redshift, glue_job_etl] >> glue_job_s3_redshift

@@ -10,27 +10,29 @@ from create_table.create_table import CREATE_TABLE
 from groups.group_upload_s3 import upload_s3_tasks
 from groups.group_check_code import check_code_s3_tasks
 
-BUCKET_NAME = '1msongdata'
-CODE_ETL_PATH_S3 = 'etl_code/elt_pyspark.py'
-CODE_S3_REDSHIFT_PATH_S3 = 'etl_code/upload_to_redshift.py'
+f = open('/opt/airflow/dags/x.txt','r')
+config = [line[:-1] for line in f]
 
-REDSHIFT_CLUSTER = Variable.get("REDSHIFT_CLUSTER")
-CONN_ID = Variable.get("CONN_ID")
-REDSHIFT_CONN_ID = Variable.get("REDSHIFT_CONN_ID")
-DB_LOGIN = Variable.get("LOGIN")
-DB_PASS = Variable.get("PASSWORD")
-DB_NAME = Variable.get("DB_NAME")
+BUCKET_NAME = config[0]
+CODE_ETL_PATH_S3 = config[1]
+CODE_S3_REDSHIFT_PATH_S3 = config[2]
+REDSHIFT_CLUSTER = config[3]
+CONN_ID = config[4]
+REDSHIFT_CONN_ID = config[5]
+DB_LOGIN = config[6]
+DB_PASS = config[7]
+DB_NAME = config[8]
 
 glue_crawler_config = {
         "Name": 'quangndd2-redshift-milsong-airflow',
         "Role": 'arn:aws:iam::666243375423:role/DataCamp_GlueService_Role',
         "DatabaseName": 'quangndd2-milsong-redshift',
-        "Targets": {"JdbcTargets": [{"ConnectionName" : "quangndd-connector-redshift", "Path": "dev/airflow/%"}]},
+        "Targets": {"JdbcTargets": [{"ConnectionName" : "quangndd-connector-redshift", "Path": "dev/airflow2/%"}]},
     }
 
 
 with DAG(
-    dag_id='data_pipeline',
+    dag_id='data_pipeline2',
     schedule='@once',
     start_date=datetime(2022, 3, 1),
     catchup=False

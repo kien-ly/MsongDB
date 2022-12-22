@@ -1,0 +1,9 @@
+1msongdata
+etl_code/elt_pyspark.py
+etl_code/upload_to_redshift.py
+kien-01
+aws_default
+rs_kienlt01
+awsuer
+Tk123#123
+msongdb
