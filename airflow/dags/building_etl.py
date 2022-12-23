@@ -14,11 +14,11 @@ Conn_id = Variable.get("CONN_ID")
 glue_crawler_config = {
     "Name": "crawlerRedshitT",
     "Role":"arn:aws:iam::666243375423:role/DataCamp_GlueService_Role",
-    "DatabaseName":"dbtung",
-    "Targets": {"JdbcTargets": [{"ConnectionName" : "connection_redshift_tung", "Path": "dev/millionincremental/"}]}
+    "DatabaseName":"kien",
+    "Targets": {"JdbcTargets": [{"ConnectionName" : "connection_redshift_tung", "Path": "dev/msong/"}]}
 }
 
-with DAG('pipeline3', schedule='@daily', start_date= datetime(2022,1,1), catchup=False) as dag:
+with DAG('pipeline3', schedule='@once', start_date= datetime(2022,1,1), catchup=False) as dag:
     glueJob_s3_to_s3 =  GlueJobOperator(
         task_id = 's3_to_s3',
         aws_conn_id=Conn_id,

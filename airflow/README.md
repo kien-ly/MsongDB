@@ -19,6 +19,12 @@ DB_LOGIN = config[6]
 DB_PASS = config[7]
 DB_NAME
 ```
+
+Duong dan file x.txt: /opt/airflow/dags/x.txt
+
+Voi trong dockerfile set:
+ENV AIRFLOW_HOME=/opt/airflow
+
 Chúng ta có thể set giá trị trong UI airflow như trong hình
 
 ![](https://github.com/neikyllykien/MsongDB/blob/main/img/a-variable.png)
@@ -27,6 +33,23 @@ Chúng ta có thể set giá trị trong UI airflow như trong hình
 Thêm nữa ta phải khai báo kết nối đến aws và redshift 
 ![](https://github.com/neikyllykien/MsongDB/blob/main/img/a-connect.png)
 *airflow connection*
+
+## glue_crawler_config
+```
+glue_crawler_config = {
+        "Name": 'quangndd2-redshift-milsong-airflow',
+        "Role": 'arn:aws:iam::666243375423:role/DataCamp_GlueService_Role',
+        "DatabaseName": 'quangndd2-milsong-redshift',
+        "Targets": {"JdbcTargets": [{"ConnectionName" : "quangndd-connector-redshift", "Path": "dev/airflow/%"}]},
+    }
+```
+Để kết nối glue job đã được cấu hình sẵn trên AWS. 
+
+
+![](https://github.com/neikyllykien/MsongDB/blob/main/img/a-redshift-connect.png)
+*redshift-connect*
+
+
 
 # Cấu trúc pipeline
 <p>
@@ -56,4 +79,8 @@ upload_code_etl_to_s3 = PythonOperator(
 #### upload_code_s3_redshift_to_s3
 Giống task trên
 
->test
+
+# Pipeline khác đơn giản hơn:
+
+``` glueJob_s3_to_s3 >> glueJob_factS3_to_s3 >> crawl_redshift >> glueJob_s3_to_redshift ```
+
